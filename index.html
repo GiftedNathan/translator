@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Translator</title>
+</head>
+<body>
+    <div class="container">
+
+        <form action="#" class="form">
+
+            <div class="form-group">
+
+                <div class="text-input">
+
+                    <textarea cols="30" rows="10" class="inputed-text" placeholder="Enter a text"></textarea>
+
+                    <div class="menu">
+                        <div class="icons">
+                            <img src="./images/icons8-audio-50.png" alt="audio" class="icon">
+                            <img src="./images/icons8-documents-50.png" alt="copy-text" class="icon">
+                        </div>
+
+                        <select name="" id="" class="from-country">
+                            <!-- <option value="english">english</option>
+                            <option value="hindi">hindi</option>
+                            <option value="german">german</option>
+                            <option value="spanish">spanish</option>
+                            <option value="korea">korea</option> -->
+                        </select>
+                    </div>
+        
+                </div>
+                
+                <div class="text-input">
+
+                    <textarea cols="30" rows="10" class="translated-text" placeholder="Translated text" disabled></textarea>
+
+                    <div class="menu">
+                        <div class="icons">
+                            <img src="./images/icons8-audio-50.png" alt="audio" class="icon">
+                            <img src="./images/icons8-documents-50.png" alt="copy-text" class="icon">
+                        </div>
+
+                        <select name="" id="" class="to-country">
+                            <!-- <option value="english">english</option>
+                            <option value="hindi">hindi</option>
+                            <option value="german">german</option>
+                            <option value="spanish">spanish</option>
+                            <option value="korea">korea</option> -->
+                        </select>
+                    </div>
+        
+                </div>
+                
+            </div>
+
+            <img src="./images/icons8-data-transfer-48.png" alt="exchange-text" id="exchange-text" class="icon">
+            
+
+            <button class="translate-button">translate text</button>
+        
+        </form>
+    </div>
+
+
+    <script src="./js/countries.js" ></script>
+    <script src="./js/script.js" ></script>
+    
+</body>
+</html>

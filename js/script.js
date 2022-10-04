@@ -7,38 +7,34 @@ const translateButton = document.querySelector(".translate-button");
 const exchangeTextButton = document.getElementById("exchange-text");
 
 
+const speakInputedText = document.getElementById("speak-inputed-text");
+const copyInputedText = document.getElementById("copy-inputed-text");
+
+const speakTranslatedText = document.getElementById("speak-translated-text");
+const copyTranslatedText = document.getElementById("copy-translated-text");
 
 
-
-const renderCountryOptions = () =>{
+// let creating HTML option element with counties as values
+const renderCountryOptions = (selectElement, defaultOption) =>{
     let optionTag = "";
 
     for (let country in countries){
         optionTag += `<option value="${country}">${countries[country]}</option>`;
-        // console.log(countries[country], country);
+        
+        // select an option by default by adding "selected"
+        if (country === defaultOption ){
+            optionTag += `<option value="${country}" selected >${countries[country]}</option>`;
+        } 
+
     }
-    
-    fromCountry.innerHTML = optionTag;
-    toCountry.innerHTML = optionTag;
 
-    // for (let country in countries){
-
-    //     let option = document.createElement("option");
-    //     option.setAttribute("value", country);
-    
-    //     let optionText = document.createTextNode(countries[country]);
-    //     option.appendChild(optionText);
-    
-    //     fromCountry.appendChild(option)
-    //     toCountry.appendChild(option)
-    
-    // }
-
+    selectElement.innerHTML = optionTag;
 }
-renderCountryOptions()
+renderCountryOptions(fromCountry, "en-GB");
+renderCountryOptions(toCountry, "fr-FR");
 
 
-
+// tranlate inputed text by adding event listenner to button
 translateButton.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -70,4 +66,48 @@ exchangeTextButton.addEventListener("click", () => {
     translatedText.value = temp;
 })
 
-// console.log(exchangeTextButton);
+
+// a function to copy text 
+const copyToClipboard = (textToCopy) =>{
+    if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        // console.log(textToCopy)
+        alert("text copied successfully");
+        return navigator.clipboard.writeText(textToCopy);
+    }
+    return Promise.reject("Opps: clip API not supported");
+}
+// copyToClipboard();
+
+// adding event listener to copy icons and call the copy function 
+// copy inputed text
+copyInputedText.addEventListener("click", () =>{
+    copyToClipboard(inputedText.value);
+});
+
+// copy tranlated text
+copyTranslatedText.addEventListener("click", () =>{
+    copyToClipboard(translatedText.value);
+});
+
+
+// a function to speak out text
+const speakOutText = (textToSpeakOut, speakingLanguage) => {
+
+    if ("speechSynthesis" in window) {
+        let voiceMessage = new SpeechSynthesisUtterance();
+        voiceMessage.lang = speakingLanguage;
+        voiceMessage.text = textToSpeakOut;
+        window.speechSynthesis.speak(voiceMessage);
+    } else {
+        console.log("error speaking out");
+    }
+}
+
+speakInputedText.addEventListener("click", () => {
+    speakOutText(inputedText.value, fromCountry.value);
+})
+speakTranslatedText.addEventListener("click", () => {
+    speakOutText(translatedText.value, toCountry.value);
+})
+
+

@@ -5,16 +5,21 @@ A simple language translator with text-to-voice and copy functionality. It is bu
 
 # Technology used
 
--Built with HTML, CSS and JavaScript
--This project is built with HTML, CSS and JavaScript
--Memory API  was used to build the tranlation functionality
--The web speech API in JavaScript was used to tranplate the text to speech
--Tha Asynchronous clipboard API was used to build the copy funtionality
+- Built with HTML, CSS and JavaScript
+- This project is built with HTML, CSS and JavaScript
+- Memory API  was used to build the tranlation functionality
+- The web speech API in JavaScript was used to tranplate the text to speech
+- Tha Asynchronous clipboard API was used to build the copy funtionality
+
 
 
 ## Screenshots
 
 ![App Screenshot](./images/snapshot.JPG)
+
+
+## ![Live Prooject](https://giftednathan.github.io/translator)
+
 
 
 ## Authors

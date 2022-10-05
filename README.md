@@ -1,4 +1,4 @@
-# Animated weather icons
+# Language translator 
 
 A simple language translator with text-to-voice and copy functionality. It is built with Javascript, HTML AND CSS 
 

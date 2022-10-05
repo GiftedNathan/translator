@@ -70,13 +70,16 @@ exchangeTextButton.addEventListener("click", () => {
 // a function to copy text 
 const copyToClipboard = (textToCopy) =>{
     if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-        // console.log(textToCopy)
-        alert("text copied successfully");
-        return navigator.clipboard.writeText(textToCopy);
+        
+        return navigator.clipboard.writeText(textToCopy).then(() => {
+            alert("Copied Succesfully: " + textToCopy);
+        });
+        // return navigator.clipboard.writeText(textToCopy, alert("text copied successfully"));
     }
-    return Promise.reject("Opps: clip API not supported");
+    // return Promise.reject("Opps: clip API not supported");
+    alert("Opps: clip API not supported, can't copy text");
 }
-// copyToClipboard();
+
 
 // adding event listener to copy icons and call the copy function 
 // copy inputed text
@@ -99,7 +102,8 @@ const speakOutText = (textToSpeakOut, speakingLanguage) => {
         voiceMessage.text = textToSpeakOut;
         window.speechSynthesis.speak(voiceMessage);
     } else {
-        console.log("error speaking out");
+        alert(window.speechSynthesis.error() + " Sorry: Language not supported");
+        console.log(window.speechSynthesis.error(), "error speaking out");
     }
 }
 

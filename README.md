@@ -18,7 +18,7 @@ A simple language translator with text-to-voice and copy functionality. It is bu
 ![App Screenshot](./images/snapshot.JPG)
 
 
-## [Click me for Live Preview](https://giftednathan.github.io/translator)
+## [Click me for a live preview](https://giftednathan.github.io/translator)
 
 
 

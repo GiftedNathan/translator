@@ -98,10 +98,11 @@ const countries = {
     "zu-ZA": "Zulu"
 }
 
-for (let i = 0; i < countries.length; i++) {
-    console.log(countries[i]);
+// for (let i = 0; i < countries.length; i++) {
+//     console.log(countries[i]);
     
-}
+// }
+
 
 // Object.entries(countries).forEach(([key, value]) => {
 //     console.log(key, value);

@@ -18,17 +18,19 @@ const copyTranslatedText = document.getElementById("copy-translated-text");
 const renderCountryOptions = (selectElement, defaultOption) =>{
     let optionTag = "";
 
-    for (let country in countries){
-        optionTag += `<option value="${country}">${countries[country]}</option>`;
+    Object.entries(countries).forEach(([key, value]) => {
+
+        optionTag += `<option value="${key}">${value}</option>`;
         
         // select an option by default by adding "selected"
-        if (country === defaultOption ){
-            optionTag += `<option value="${country}" selected >${countries[country]}</option>`;
+        if (key === defaultOption ){
+            optionTag += `<option value="${key}" selected >${value}</option>`;
         } 
 
-    }
+    });
 
     selectElement.innerHTML = optionTag;
+
 }
 renderCountryOptions(fromCountry, "en-GB");
 renderCountryOptions(toCountry, "fr-FR");
@@ -45,7 +47,7 @@ translateButton.addEventListener('click', (e) => {
     
     translatedText.setAttribute("placeholder", "translating text ...");
     
-    let apiURL = `https://api.mymemory.translated.net/get?q=${sentenceToTranslate}!&langpair=${sourceLanguage}|${destinationLanguage}`;
+    const apiURL = `https://api.mymemory.translated.net/get?q=${sentenceToTranslate}!&langpair=${sourceLanguage}|${destinationLanguage}`;
     // console.log(fromCountry.value, " -> ", toCountry.value);
 
     // translatedText.value = inputedText.value;
@@ -56,6 +58,22 @@ translateButton.addEventListener('click', (e) => {
         tranlatedSentence = data.responseData.translatedText;
         translatedText.value = tranlatedSentence;
     });
+
+
+    // async function getTranslation(apiURL) {
+    //     // let url = 'users.json';
+    //     try {
+    //         let response = await fetch(apiURL);
+    //         return await response.json().data.responseData.translatedText;
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+    // async function tranlatedSentence(){
+    //     return await getTranslation();
+    // }
+
+    // translatedText.value =  tranlatedSentence();
 
 
 });
